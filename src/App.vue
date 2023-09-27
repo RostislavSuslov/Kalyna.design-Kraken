@@ -3,11 +3,12 @@
 </script>
 
 <template>
-   <div id="app">
+   <div id="root">
      <h1 class="text-9xl">Hello Vue</h1>
    </div>
 </template>
 
-<style scoped>
+<style lang="scss">
+@import './assets/css/style.scss'
 
 </style>
