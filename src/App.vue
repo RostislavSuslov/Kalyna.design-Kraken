@@ -8,7 +8,7 @@
   })
 
   const helperText = computed(()=>{
-    return "Please enter your full name in this text box.!"
+    return "A smile always expresses positive emotions: happiness, joy, fun. Smile at someone and they'll smile back :)"
   })
 
 </script>
@@ -16,7 +16,8 @@
 <template>
    <div id="root" class="container ">
      <br>
-     <custom-input :type="number" label="Input title" :error="inputError" :helperText="helperText"/>
+     <custom-input type="text" label="Input title" :error="inputError" :helperText="helperText"/>
+
    </div>
 </template>
 
