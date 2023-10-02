@@ -1,8 +1,10 @@
 <script setup>
   import TestContainer from "@/components/TestContainer.vue";
   import CustomInput from "@/components/CustomInput.vue";
+
   import { provide } from 'vue';
   import {computed, ref} from "vue";
+  import FormLogin from "@/components/FormLogin.vue";
 
   const input = ref('')
   const inputError = computed(()=>{
@@ -37,6 +39,7 @@
 
 <template>
    <div id="root" class="container ">
+     <form-login></form-login>
      <br>
      <custom-input type="text" label="Input title" :error="inputError" :helperText="helperText"/>
      <div>
