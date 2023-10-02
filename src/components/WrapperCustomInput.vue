@@ -11,18 +11,11 @@
 
 <script setup>
 
-import {computed} from "vue";
-
 const props = defineProps({
+  placeholder: String,
   label: String,
   error: String,
   helperText: String,
   type: String,
-})
-const slots = defineSlots();
-
-const hasError = computed(()=> !!(props.error || slots.error))
-const hasHelperText = computed(()=> !!(props.helperText || slots.helperText))
-</script>
-
-<style scoped lang="scss"></style>
+})  
+</script>                                                                                                                                                                                                                         <style scoped lang="scss"></style>
