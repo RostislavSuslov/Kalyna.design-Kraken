@@ -12,12 +12,25 @@
   const helperText = computed(()=>{
     return "A smile always expresses positive emotions: happiness, joy, fun. Smile at someone and they'll smile back :)"
   });
-  const arrColors = [
-    { red: '#FF5733' },
-    { green: '#33FF57' },
-    { blue: '#FFFF33' },
-    { yellow: '#33FFFF' },
-    { black: '#000' }
+  const arrColors = [{
+     cityKyiv: '#FF5733',
+     cityKharkiv: '#33FF57',
+     cityVinnytsya: '#FFFF33',
+     cityZakarpattia: '#33FFFF',
+     cityZaporizhia: '#000'}
+  ];
+  const arr = [{
+      name: "Kyiv",
+      color: "#fff",
+      description: "lorem4",
+      src: "",
+    },
+    {
+      name: "Kyiv",
+      color: "#fff",
+      description: "lorem4",
+      src: "",
+    }
   ];
   provide('colors', arrColors);
 </script>

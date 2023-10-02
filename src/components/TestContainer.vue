@@ -1,14 +1,15 @@
 <template>
   <div>
-    <ul class="grid grid-cols-2 gap-6 p-12" @click="changeBackgroundColor">
-      <li
-          v-for="(colorObject, index) in arrColors"
-          :key="index"
-          :style="{ backgroundColor: Object.values(colorObject)[0] }"
-      >
-        {{ Object.keys(colorObject)[0] }}: {{ Object.values(colorObject)[0] }}
-      </li>
-    </ul>
+    <div class="grid grid-cols-2 gap-6 p-12" @click="changeBackgroundColor">
+      <template v-for="(colorObject, index) in arrColors">
+        <button v-for="(color, key) in colorObject"
+            :key="index + key + color"
+            :style="{ backgroundColor: color }"
+        >
+          {{ key }} : {{ color }}
+        </button>
+      </template>
+    </div>
   </div>
 </template>
 
@@ -17,7 +18,7 @@
 const { arrColors } = defineProps(['arrColors']);
 
 const changeBackgroundColor = (event) => {
-  if (event.target.tagName === 'LI') {
+  if (event.target.tagName === 'BUTTON') {
     const ulElement = event.currentTarget;
     const liElement = event.target;
 
