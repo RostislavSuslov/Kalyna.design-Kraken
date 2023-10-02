@@ -8,7 +8,6 @@
     >
   </wrapper-custom-input>
 </template>
-
 <script setup>
 import WrapperCustomInput from "@/components/WrapperCustomInput.vue";
 
@@ -29,7 +28,6 @@ defineEmits(
     name: String,
   })
 </script>
-
 <style scoped lang="scss"></style>
 
 
