@@ -14,27 +14,46 @@
   const helperText = computed(()=>{
     return "A smile always expresses positive emotions: happiness, joy, fun. Smile at someone and they'll smile back :)"
   });
-  const arrColors = [{
-     cityKyiv: '#FF5733',
-     cityKharkiv: '#33FF57',
-     cityVinnytsya: '#FFFF33',
-     cityZakarpattia: '#33FFFF',
-     cityZaporizhia: '#000'}
-  ];
-  const arr = [{
+
+  import KyivGerb from './assets/img/gerbs-Kyiv.png'
+  import KharkivGerb from './assets/img/gerbs-Kharkiv.png'
+  import VinnytsyaGerb from './assets/img/gerbs-Vinnytsya.png'
+  import ZakarpattiaGerb from './assets/img/gerbs-Zakarpattia.png'
+  import ZaporizhiaGerb from './assets/img/gerbs-Zaporizhia.png'
+
+  const arrCities = [{
+      id: 1,
       name: "Kyiv",
-      color: "#fff",
-      description: "lorem4",
-      src: "",
+      src: KyivGerb,
+      description: "lorem1",
     },
     {
-      name: "Kyiv",
-      color: "#fff",
+      id: 2,
+      name: "Kharkiv",
+      src: KharkivGerb,
+      description: "lorem2",
+    },
+    {
+      id: 3,
+      name: "Vinnytsya",
+      src: VinnytsyaGerb,
+      description: "lorem3",
+    },
+    {
+      id: 4,
+      name: "Zakarpattia",
+      src: ZakarpattiaGerb,
       description: "lorem4",
-      src: "",
-    }
+    },
+    {
+      id: 5,
+      name: "Zaporizhia",
+      src: ZaporizhiaGerb,
+      description: "lorem5",
+    },
   ];
-  provide('colors', arrColors);
+  provide('cities', arrCities);
+
 </script>
 
 <template>
@@ -42,7 +61,7 @@
      <form-login></form-login>
      <br>
      <custom-input type="text" label="Input title" :error="inputError" :helperText="helperText"/>
-     <div>
+     <div class="grid gap-8">
        <TestContainer :arrColors="arrColors" />
        <TestContainer :arrColors="arrColors" />
        <TestContainer :arrColors="arrColors" />
@@ -52,7 +71,5 @@
 </template>
 
 <style lang="scss">
-@import './assets/css/style.scss';
-
-
+  @import './assets/css/style.scss';
 </style>
