@@ -1,28 +1,34 @@
 <template>
-  <div>
-    <div class="grid grid-cols-2 gap-6 p-12" @click="changeBackgroundColor">
-      <template v-for="(colorObject, index) in arrColors">
-        <button v-for="(color, key) in colorObject"
-            :key="index + key + color"
-            :style="{ backgroundColor: color }"
-        >
-          {{ key }} : {{ color }}
-        </button>
-      </template>
+    <div>
+      <div class="show">
+        <img :src="curentImg" alt="city">
+      </div>
+      <div class="grid grid-cols-2 p-8 border" @click="changeBackgroundColor">
+        <div v-for="(city) in colorsImgArr" :key="city.id">
+
+            <button @click="curentImg = city.src" class=" inline-block py-3 px-6 m-2 rounded-[5px] border" >
+              {{city?.name}}
+            </button>
+
+        </div>
+      </div>
     </div>
-  </div>
+
 </template>
 
 <script setup>
 // Принимаем массив объектов через props
-const { arrColors } = defineProps(['arrColors']);
+import {inject, ref} from "vue";
 
+
+const colorsImgArr = inject('cities')
+const curentImg = ref(null);
 const changeBackgroundColor = (event) => {
   if (event.target.tagName === 'BUTTON') {
-    const ulElement = event.currentTarget;
-    const liElement = event.target;
+    const wrapper = event.currentTarget;
+    const button = event.target;
 
-    ulElement.style.backgroundColor = liElement.style.backgroundColor;
+    wrapper.style.backgroundColor = button.style.backgroundColor;
   }
 };
 </script>
