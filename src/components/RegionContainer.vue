@@ -21,7 +21,6 @@
 </template> 
 
 <script setup>
-// Принимаем массив объектов через props
 import {inject, ref} from "vue";
 
 const imgArr = inject('cities')
