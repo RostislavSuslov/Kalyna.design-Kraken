@@ -13,6 +13,7 @@
   import {ExclamationTriangleIcon} from '@heroicons/vue/20/solid'
   import {HandThumbUpIcon} from '@heroicons/vue/20/solid'
   import {BugAntIcon} from '@heroicons/vue/20/solid'
+  import {InformationCircleIcon} from '@heroicons/vue/20/solid'
 
 
 
@@ -38,9 +39,9 @@
          <CustomButton variation="primary">primary</CustomButton>
          <CustomButton variation="secondary">secondary</CustomButton>
          <CustomButton variation="success">success</CustomButton>
+         <CustomButton variation="info">info</CustomButton>
          <CustomButton variation="warning">warning</CustomButton>
          <CustomButton variation="danger">danger</CustomButton>
-         <CustomButton variation="info">info</CustomButton>
          <CustomButton disabled variation="primary">disabled</CustomButton>
        </div>
        <div class="flex flex-wrap gap-4 mb-6">
@@ -48,6 +49,7 @@
          <CustomButton as="a" :left-icon="ArrowLeftOnRectangleIcon">Arrow Left</CustomButton>
          <CustomButton as="a" variation="secondary" :right-icon="ArrowRightOnRectangleIcon">Arrow Right</CustomButton>
          <CustomButton as="a" variation="success" :right-icon="HandThumbUpIcon">success</CustomButton>
+         <CustomButton as="a" variation="info" :right-icon="InformationCircleIcon">info</CustomButton>
          <CustomButton as="a" variation="warning" :right-icon="ExclamationTriangleIcon">warning</CustomButton>
          <CustomButton as="a" variation="danger" :right-icon="BugAntIcon">danger</CustomButton>
          <CustomButton
@@ -57,23 +59,41 @@
          ></CustomButton>
        </div>
        <div class="flex flex-wrap gap-4 mb-6">
+         <h3 class="block w-full text-3xl mb-1">Custom icon case</h3>
+         <CustomButton iconCherry variation="primary">primary</CustomButton>
+         <CustomButton iconHeartsBlue variation="secondary">secondary</CustomButton>
+         <CustomButton iconHeartsYellow variation="success">success</CustomButton>
+         <CustomButton iconPetard variation="info">info</CustomButton>
+         <CustomButton iconHugs variation="warning">warning</CustomButton>
+         <CustomButton iconMagic variation="danger">danger</CustomButton>
+         <CustomButton disabled variation="primary">disabled</CustomButton>
+       </div>
+       <div class="flex flex-wrap gap-4 mb-6">
          <h3 class="block w-full text-3xl mb-1">Outline case</h3>
          <CustomButton variation="outlinePrimary">primary</CustomButton>
          <CustomButton variation="outlineSecondary">secondary</CustomButton>
          <CustomButton variation="outlineSuccess">success</CustomButton>
+         <CustomButton variation="outlineInfo">info</CustomButton>
          <CustomButton variation="outlineWarning">warning</CustomButton>
          <CustomButton variation="outlineDanger">danger</CustomButton>
-         <CustomButton variation="outlineInfo">info</CustomButton>
        </div>
        <div class="flex flex-wrap gap-4 mb-6">
-         <h3 class="block w-full text-3xl mb-1">Custom icon</h3>
-         <CustomButton iconCherry variation="primary">primary</CustomButton>
-         <CustomButton iconHeartsBlue variation="secondary">secondary</CustomButton>
-         <CustomButton iconHeartsYellow variation="success">success</CustomButton>
-         <CustomButton iconHugs variation="warning">warning</CustomButton>
-         <CustomButton iconMagic variation="danger">danger</CustomButton>
-         <CustomButton iconPetard variation="info">info</CustomButton>
-         <CustomButton disabled variation="primary">disabled</CustomButton>
+         <h3 class="block w-full text-3xl mb-1">Outline heroicons case</h3>
+         <CustomButton variation="outlinePrimary" :left-icon="ArrowLeftOnRectangleIcon">Arrow Left</CustomButton>
+         <CustomButton variation="outlineSecondary" :right-icon="ArrowRightOnRectangleIcon">Arrow Right</CustomButton>
+         <CustomButton variation="outlineSuccess" :right-icon="HandThumbUpIcon">success</CustomButton>
+         <CustomButton variation="outlineInfo" :right-icon="InformationCircleIcon">info</CustomButton>
+         <CustomButton variation="outlineWarning" :right-icon="ExclamationTriangleIcon">warning</CustomButton>
+         <CustomButton variation="outlineDanger" :right-icon="BugAntIcon">danger</CustomButton>
+       </div>
+       <div class="flex flex-wrap gap-4 mb-6">
+         <h3 class="block w-full text-3xl mb-1">Outline case custom icon</h3>
+         <CustomButton iconCherry variation="outlinePrimary">primary</CustomButton>
+         <CustomButton iconHeartsBlue variation="outlineSecondary">secondary</CustomButton>
+         <CustomButton iconHeartsYellow variation="outlineSuccess">success</CustomButton>
+         <CustomButton iconPetard variation="outlineInfo">info</CustomButton>
+         <CustomButton iconHugs variation="outlineWarning">warning</CustomButton>
+         <CustomButton iconMagic variation="outlineDanger">danger</CustomButton>
        </div>
      </div>
 
