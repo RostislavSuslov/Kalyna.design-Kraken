@@ -75,6 +75,7 @@ import {ExclamationTriangleIcon} from '@heroicons/vue/20/solid'
 import {HandThumbUpIcon} from '@heroicons/vue/20/solid'
 import {BugAntIcon} from '@heroicons/vue/20/solid'
 import {InformationCircleIcon} from '@heroicons/vue/20/solid'
+
 </script>
 
 <style scoped>

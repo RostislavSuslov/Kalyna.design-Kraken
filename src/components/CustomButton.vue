@@ -32,7 +32,7 @@
   })
 
   const buttonClass = computed(()=>{
-    return cva("inline-flex items-center justify-center font-bold py-2 px-6 shadow-xl rounded",
+    return cva("inline-flex items-center justify-center font-bold py-2 px-6 shadow-xl rounded cursor-pointer",
         {
             variants: {
               variation: {
