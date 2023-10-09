@@ -7,16 +7,12 @@
   import WrapperCustomButton from "@/components/WrapperCustomButton.vue";
   import ArrCities from "@/composables/cities.js"
 
-
-
-
-
   const input = ref('')
   const inputError = computed(()=> {
       return input.value.trim().length ? '' : 'Input is required'
   })
 
-  const helperText = computed(()=>{
+  const helperText = computed(()=> {
     return "A smile always expresses positive emotions: happiness, joy, fun. Smile at someone and they'll smile back :)"
   });
 
