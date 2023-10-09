@@ -1,6 +1,7 @@
 <script setup>
-import WrapperCustomInput from "@/components/WrapperCustomInput.vue";
+import WrapperCustomInput from "@/components/provide/WrapperCustomInput.vue";
 import {computed, inject} from "vue";
+import {useField} from "@/composables/form"
 
 const form = inject('formData');
 

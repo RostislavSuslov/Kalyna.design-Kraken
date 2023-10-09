@@ -1,6 +1,6 @@
 <script setup>
 import {ref, provide} from "vue";
-import CustomInput from "@/components/CustomInput.vue";
+import CustomInput from "@/components/provide/CustomInput.vue";
 
 const form = ref({
   login: "Rost",

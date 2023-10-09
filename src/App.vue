@@ -3,7 +3,7 @@ import { provide, reactive } from 'vue';
 import arrCities from "@/composables/cities.js";
 import { useVuelidate } from '@vuelidate/core';
 import { required, email } from '@vuelidate/validators';
-import FormLogin from "@/components/FormLogin.vue";
+import FormLogin from "@/components/provide/FormLogin.vue";
 // const input = ref('')
 // const inputError = computed(()=>{
 //     return input.value.trim().length ? '' : 'Input is required'
