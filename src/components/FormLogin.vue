@@ -7,7 +7,6 @@ const form = ref({
   email: "",
   tel: "",
   password: "",
-  password2: "",
 });
 const onSubmit =()=> {
   console.log(form.value)
@@ -18,11 +17,13 @@ provide("formData", form)
 <template>
   <form @submit.prevent="onSubmit" >
     <pre>{{form}}</pre>
-    <custom-input name="login"></custom-input>
+    <custom-input name="login" v-model="form.login"></custom-input>
     <custom-input name="email" type="email"></custom-input>
     <custom-input name="tel" type="tel"></custom-input>
-    <custom-input name="password" type="password"></custom-input>
-    <custom-input name="password2" type="password"></custom-input>
+
+    <custom-input type="password" name="password" v-model="form.password"></custom-input>
+    <custom-input type="password" name="password" :modelValue="form.password" @update:modelValue="form.password = $event"></custom-input>
+
     <button>Submit</button>
   </form>
 </template>
