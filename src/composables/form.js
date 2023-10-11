@@ -2,12 +2,20 @@ import { provide, ref, inject, computed } from "vue";
 import * as yup from 'yup';
 
 const SymbolProvideForm = Symbol("provideForm");
+// const date = new Date()
+// date.setFullYear(date.getFullYear() - 18)
 
+
+
+/*validation dashed*/
 const validationSchema = yup.object({
-    login: yup.string().min(5).max(15).email().matches(/^[A-Z][a-z]*$/, 'Имя пользователя должно начинаться с заглавной буквы'),
+    login: yup.string().min(5).max(15).matches(/^[A-Z][a-z]*$/, 'Имя пользователя должно начинаться с заглавной буквы'),
     mail:  yup.string().email(),
-    password: yup.string().min(8, 'Поганий пароль!'),
-    date: yup.date().max(2006, 'Только для взрослых 🔞'),
+    password: yup.string()
+        .required('No password provided.')
+        .min(8, 'Password is too short - should be 8 chars minimum.')
+        .matches(/[a-zA-Z]/, 'Password can only contain Latin letters.'),
+    date: yup.date().required().max(new Date().getFullYear() - 18, 'Только для взрослых 🔞'),
     number: yup.number().required().min(18), // Валидация для поля "number"
 });
 
@@ -66,4 +74,4 @@ const useField = (props) => {
     return { value, error, onSetValue };
 };
 
-export { useForm, useField, validateField };
+export { useForm, useField};
