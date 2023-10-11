@@ -1,40 +1,32 @@
-import { provide, ref, inject, computed, isRef } from "vue";
+import { provide, ref, inject, computed } from "vue";
 import * as yup from 'yup';
 
 const SymbolProvideForm = Symbol("provideForm");
 
-// Создайте схему валидации Yup, например, для проверки возраста.
 const validationSchema = yup.object({
-    login: yup.string().min(5).max(10).email(),
-    password: yup.string().min(5),
-    birthDate: yup.date().max(new Date(), 'You must be at least 18 years old.'),
+    login: yup.string().min(5).max(15).email().matches(/^[A-Z][a-z]*$/, 'Имя пользователя должно начинаться с заглавной буквы'),
+    mail:  yup.string().email(),
+    password: yup.string().min(8, 'Поганий пароль!'),
+    date: yup.date().max(2006, 'Только для взрослых 🔞'),
+    number: yup.number().required().min(18), // Валидация для поля "number"
 });
 
-// Создайте функцию для валидации поля.
 const validateField = async (name, value) => {
     const fieldSchema = validationSchema.fields[name];
     try {
         await fieldSchema.validate(value);
-        return null; // Валидация успешна, возвращаем null
+        return null;
     } catch (error) {
-        return error.errors[0]; // Возвращаем первую ошибку, если есть
+        return error.errors[0] || null;
     }
 };
 
-// Создайте функцию useForm, которая будет предоставлять данные формы и валидацию.
 const useForm = (initialValue = {}) => {
     const form = ref(initialValue);
     const errors = ref({});
 
     const checkIsValid = async () => {
-        let isValid = true;
-        for (let key in errors.value) {
-            await validateField(key, form.value[key]);
-            if (errors.value[key]) {
-                isValid = false;
-            }
-        }
-        return isValid;
+        return await validationSchema.isValid(form.value);
     };
 
     const onSetValue = (event, name) => {
@@ -59,7 +51,6 @@ const useForm = (initialValue = {}) => {
     return state;
 };
 
-// Создайте функцию useField для работы с полями формы.
 const useField = (props) => {
     const formState = inject(SymbolProvideForm);
 
@@ -75,4 +66,4 @@ const useField = (props) => {
     return { value, error, onSetValue };
 };
 
-export { useForm, useField, validateField  };
+export { useForm, useField, validateField };

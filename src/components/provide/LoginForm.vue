@@ -1,40 +1,41 @@
 <template>
+  <form
+      @submit.prevent="onSubmit"
+      class="flex flex-col items-center border-2 px-6 py-10 max-w-xl mx-auto mb-6 rounded-[4px]"
+  >
+     <h3 class="block w-full text-3xl mb-8">Log in</h3>
+     <custom-input  label="login" name="login" class="mb-2 w-full" placeholder="login"/>
+     <custom-input type="mail" label="mail" name="mail" class="mb-2 w-full" placeholder="mail"/>
+     <custom-input type="password" label="password" name="password" class="mb-2 w-full" placeholder="password"/>
+     <custom-input type="date" label="date" name="date" class="mb-2 w-full" placeholder="mail"/>
+     <custom-input type="number" label="number" name="number" class="mb-2 w-full" placeholder="mail"/>
+     <prepare-button :right-icon="ArrowRightOnRectangleIcon">Submit</prepare-button>
+  </form>
   <pre>
     {{ form }}
   </pre>
   <pre>
     {{ errors }}
   </pre>
-  <form
-      @submit.prevent="onSubmit"
-      class="max-w-md mx-auto my-4 p-4 bg-white rounded-lg shadow-lg"
-  >
-    <div class="mb-4">
-      <custom-input name="login" class="mb-2" :error="errors.login"/>
-    </div>
-    <div class="mb-4">
-      <custom-input type="password" name="password" class="mb-2"/>
-    </div>
-    <button
-        class="w-full py-2 px-4 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500"
-    >
-      Submit
-    </button>
-  </form>
 </template>
 
 <script setup>
-import { watch } from "vue";
 import CustomInput from "@/components/provide/CustomInput.vue";
+import PrepareButton from "@/components/validate/PrepareButton.vue";
+import {ArrowRightOnRectangleIcon} from '@heroicons/vue/20/solid'
 import { useForm } from "@/composables/form.js";
 import { object, string } from 'yup';
+import * as yup from "yup";
 
 const { form, errors, checkIsValid } = useForm({
   login: "",
   password: "",
 }, object({
-  login: string().min(5).max(10).email(),
-  password: string().min(5)
+  // login: string().min(5).max(10).email(),
+  // password: string().min(5),
+  // birthDate: yup.date().max(new Date()),
+  // date: yup.date().min(11-11-2022),
+  // number: yup.number().required().min(18), // Валидация для поля "number"
 }));
 
 const onSubmit = async () => {
@@ -42,40 +43,10 @@ const onSubmit = async () => {
   if (await checkIsValid()) {
     console.log(form.value);
   }
-  // const validationErrors = validator();
-  //
-  // Object.keys(validationErrors).forEach((field) => {
-  //   errors.value[field] = validationErrors[field];
-  // });
-  //
-  // if (Object.keys(validationErrors).length === 0) {
-  //   console.log(form.value);
-  // }
 };
 
 const clearError = (fieldName) => {
   errors.value[fieldName] = "";
 };
-
-// const validator = () => {
-//   const validationErrors = {};
-//
-//   if (!form.value.login) {
-//     validationErrors.login = "Login is required";
-//   }
-//
-//   if (!form.value.password) {
-//     validationErrors.password = "Password is required";
-//   }
-//
-//   return validationErrors;
-// };
-
-// watch(form, () => {
-//   const validationErrors = validator();
-//   Object.keys(errors.value).forEach((field) => {
-//     errors.value[field] = validationErrors[field] || "";
-//   });
-// });
 </script>
 
