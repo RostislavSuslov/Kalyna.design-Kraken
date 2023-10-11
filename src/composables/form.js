@@ -16,7 +16,7 @@ const validationSchema = yup.object({
         .min(8, 'Password is too short - should be 8 chars minimum.')
         .matches(/[a-zA-Z]/, 'Password can only contain Latin letters.'),
     date: yup.date().required().max(new Date().getFullYear() - 18, 'Только для взрослых 🔞'),
-    number: yup.number().required().min(18), // Валидация для поля "number"
+    number: yup.number().required().min(18),
 });
 
 const validateField = async (name, value) => {

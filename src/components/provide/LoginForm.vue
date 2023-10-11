@@ -4,11 +4,11 @@
       class="flex flex-col items-center border-2 px-6 py-10 max-w-xl mx-auto mb-6 rounded-[4px]"
   >
      <h3 class="block w-full text-3xl mb-8">Log in</h3>
-     <custom-input  label="login" name="login" class="mb-2 w-full" placeholder="login"/>
-     <custom-input type="mail" label="mail" name="mail" class="mb-2 w-full" placeholder="mail"/>
-     <custom-input type="password" label="password" name="password" class="mb-2 w-full" placeholder="password"/>
-     <custom-input type="date" label="date" name="date" class="mb-2 w-full" placeholder="mail"/>
-     <custom-input type="number" label="number" name="number" class="mb-2 w-full" placeholder="mail"/>
+     <custom-input  label="login" name="login" placeholder="login"/>
+     <custom-input type="mail" label="mail" name="mail" placeholder="mail"/>
+     <custom-input type="password" label="password" name="password" placeholder="password"/>
+     <custom-input type="date" label="date" name="date" placeholder="mail"/>
+     <custom-input type="number" label="number" name="number" placeholder="mail"/>
      <prepare-button :right-icon="ArrowRightOnRectangleIcon">Submit</prepare-button>
   </form>
   <pre>

@@ -5,7 +5,7 @@ import PrepareForm from "@/components/validate/PrepareForm.vue";
 <template>
   <div class="container ">
     <prepare-form></prepare-form>
-<!--    <login-form></login-form>-->
+  <login-form></login-form>
   </div>
 </template>
 
