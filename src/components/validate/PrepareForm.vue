@@ -45,14 +45,11 @@ const validationSchema = {
 }
 
 const onSubmit = async (...arr) => {
-
   await new Promise((resolve) => {
     setTimeout(() => {
       resolve(true)
     }, 4000)
   })
-
-
   console.log(arr)
 }
 </script>
