@@ -44,7 +44,6 @@ const validationSchema = {
   password: yup.string().required().min(8),
 }
 
-
 const onSubmit = async (...arr) => {
 
   await new Promise((resolve) => {
@@ -56,11 +55,4 @@ const onSubmit = async (...arr) => {
 
   console.log(arr)
 }
-
-
 </script>
-<style scoped>
-[role="alert"] {
-  color: red;
-}
-</style>
