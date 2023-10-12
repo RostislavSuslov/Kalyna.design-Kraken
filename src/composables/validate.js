@@ -5,16 +5,17 @@ const useForm = () => {
 
 const useField = (props) => {
     const value = ref(props.modelValue);
-
-    // const formState = inject(SymbolProvideForm);
+    console.log(value)
+    // // const formState = inject(SymbolProvideForm);
     //
     // const onSetValue = (newValue) => {
     //     value.value = newValue;
     // }
     //
-     return {
-         value,
-     };
+      return {
+          value,
+
+      };
 }
 
 

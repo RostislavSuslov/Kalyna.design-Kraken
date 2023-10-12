@@ -44,7 +44,7 @@ const props = defineProps({
       'sm',
       'lg'
     ].includes(val),
-    default: "first",
+    default: "none",
   },
   leftIcon:  [Object, Function],
   rightIcon: [Object, Function],
