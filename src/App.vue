@@ -2,10 +2,12 @@
 import LoginForm from "@/components/provide/LoginForm.vue";
 import PrepareForm from "@/components/validate/PrepareForm.vue";
 import RegisterForm from "@/components/validate/RegisterForm.vue";
+import RolesForm from "@/components/validate/RolesForm.vue";
 </script>
 <template>
   <div class="container ">
-    <register-form />
+    <roles-form />
+<!--    <register-form />-->
 <!--    <prepare-form />-->
 <!--    <login-form />-->
   </div>
