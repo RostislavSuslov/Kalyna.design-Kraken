@@ -94,7 +94,6 @@ const onSubmitWrapper = async (formValues) => {
     <template v-if="currentStep === 0">
       <label>Select your role:</label>
       <ValidationField type="radio" name="person" :label="key" v-for="(value, key) in PERSONS" :value="value" :key="value"/>
-
     </template>
     <template v-if="currentStep === 1">
       <ValidationField name="name" label="Name" placeholder="Your name"/>
@@ -125,7 +124,6 @@ const onSubmitWrapper = async (formValues) => {
       <prepare-button color="success" :right-icon="ArrowRightIcon" v-if="currentStep !== 2" type="submit">Next</prepare-button>
       <prepare-button color="success" :right-icon="FireIcon" v-if="currentStep === 2" type="submit" :loading="isSubmitting">Submit</prepare-button>
     </div>
-
     <pre>{{ values }}</pre>
     <pre>{{errors}}</pre>
   </Form>

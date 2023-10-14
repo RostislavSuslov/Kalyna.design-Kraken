@@ -25,6 +25,10 @@ const props = defineProps({
     default: "text"
   },
   name: String,
+  value: String,
+  checked:  {
+    type: String,
+  },
 })
 
 const {value, onSetValue} = useField(props);
