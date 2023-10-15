@@ -1,14 +1,17 @@
 <script setup>
-
+import LoginForm from "@/components/provide/LoginForm.vue";
+import PrepareForm from "@/components/validate/PrepareForm.vue";
+import RegisterForm from "@/components/validate/RegisterForm.vue";
+import RolesForm from "@/components/validate/RolesForm.vue";
 </script>
-
 <template>
-   <div id="root">
-     <h1 class="text-9xl">Hello Vue</h1>
-   </div>
+  <div class="container ">
+    <roles-form />
+<!--    <register-form />-->
+<!--    <prepare-form />-->
+<!--    <login-form />-->
+  </div>
 </template>
-
 <style lang="scss">
-@import './assets/css/style.scss';
-
+  @import './assets/css/style.scss';
 </style>
