@@ -12,4 +12,6 @@ import RolesForm from "@/components/validate/RolesForm.vue";
 <!--    <login-form />-->
   </div>
 </template>
-
+<style lang="scss">
+  @import './assets/css/style.scss';
+</style>
