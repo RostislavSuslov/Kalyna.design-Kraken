@@ -10,7 +10,6 @@ import ValidationField from "./ValidationField.vue";
 const PERSONS = {
   teacher: "Teacher",
   student: "Student",
-  partner: "Partner",
 };
 
 const initialValue = {
@@ -18,7 +17,7 @@ const initialValue = {
   name: "",
 };
 
-const { handleSubmit } = useForm({
+const { handleSubmit, values, errors } = useForm({
   validationSchema: yup.object({
     email: yup.string().required().email(),
 
@@ -64,13 +63,17 @@ const onSubmit = handleSubmit((values) => {
     <validation-field
         name="phoneNumber"
         type="phone"
-        placeholder="(999) 999-9999"
+        placeholder="+38(999)-99-99-999"
+        v-if="values.person === PERSONS.teacher"
+        v-mask="'+38(000)-00-00-000'"
     />
     <validation-field
         type="text"
         name="series_passport"
         label="Series passport"
-        placeholder="Your email"
+        placeholder="AA123456"
+        v-if="values.person === PERSONS.teacher"
+        v-mask="'SS 000000'"
     />
     <validation-field
         type="password"
@@ -85,6 +88,9 @@ const onSubmit = handleSubmit((values) => {
         placeholder="Confirm password"
     />
     <prepare-button color="success" :right-icon="FireIcon" type="submit">Submit</prepare-button>
+    <pre>values: {{ values }}</pre>
+    <pre>errors: {{ errors }}</pre>
+
   </form>
 </template>
 <style>

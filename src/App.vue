@@ -7,7 +7,7 @@ import RolesForm from "@/components/validate/RolesForm.vue";
 <template>
   <div class="container ">
     <roles-form />
-    <register-form />
+<!--    <register-form />-->
 <!--    <prepare-form />-->
 <!--    <login-form />-->
   </div>
