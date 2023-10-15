@@ -6,3 +6,8 @@
   --invert-primary-color: #{$invert-primary-color};
   --invert-secondary-color: #{$invert-secondary-color};
 }
+
+//@import url('variables.scss');
+$primary-color: #2bac2b;
+$secondary-color: #2b40ac;
+
