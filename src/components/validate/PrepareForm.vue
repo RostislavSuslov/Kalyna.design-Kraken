@@ -4,7 +4,7 @@
         :validationSchema="validationSchema"
         class="flex flex-col items-center border-2 px-6 py-10 max-w-xl mx-auto mb-6 rounded-[4px]"
   >
-    <h3 class="block w-full text-3xl mb-8">Log in</h3>
+    <h3 class="block w-full text-3xl mb-8">Log in (prepare-form)</h3>
     <ValidationField name="login" label="login" />
     <ValidationField type="email" name="email" label="email" />
     <ValidationField type="password" name="password" label="password" />
@@ -20,13 +20,6 @@ import {FireIcon} from '@heroicons/vue/20/solid'
 import {Form} from 'vee-validate';
 import * as yup from 'yup';
 import ValidationField from "@/components/validate/ValidationField.vue";
-
-
-// const loginRules = yup.string().min(5);
-// const passwordRules = yup.string().required().min(8);
-// const mailRules = yup.string().required();
-// const dateRules = yup.date().max(12 - 11 - 2010, 'возрастное ограничение, вход строго с 18 лет');
-// const numberRules = yup.number().required().min(18)
 
 const initialValue = {
   date: "1976-07-20",
