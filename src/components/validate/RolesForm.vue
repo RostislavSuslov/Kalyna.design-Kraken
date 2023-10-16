@@ -5,7 +5,8 @@ import "yup-phone";
 import { useForm } from 'vee-validate';
 import {FireIcon} from '@heroicons/vue/20/solid'
 import PrepareButton from "./PrepareButton.vue";
-import ValidationField from "./ValidationField.vue";
+import ControledField from "@/components/validate/ControledField.vue";
+import TextField from "@/components/validate/TextField.vue";
 
 const PERSONS = {
   teacher: "Teacher",
@@ -51,29 +52,30 @@ const { handleSubmit, values, errors, isSubmitting } = useForm({
       class="flex flex-col items-center border-2 px-6 py-10 max-w-xl mx-auto mb-6 rounded-[4px]"
 
   >
+    <h3 class="block w-full text-3xl mb-8">Roles form</h3>
     <label>Select your role:</label>
-    <validation-field
-        type="radio"
+    <controled-field
         name="person"
         :label="key"
         v-for="(value, key) in PERSONS"
         :value="value"
         :key="value"
     />
-    <validation-field
+    <text-field
         type="email"
         name="email"
         label="Email"
         placeholder="Your email"
     />
-    <validation-field
+    <text-field
         name="phoneNumber"
         type="phone"
         placeholder="+38(999)-99-99-999"
         v-if="values.person === PERSONS.teacher"
+        mask=""
         v-mask="'+38(000)-00-00-000'"
     />
-    <validation-field
+    <text-field
         type="text"
         name="series_passport"
         label="Series passport"
@@ -81,13 +83,13 @@ const { handleSubmit, values, errors, isSubmitting } = useForm({
         v-if="values.person === PERSONS.teacher"
         v-mask="'SS 000000'"
     />
-    <validation-field
+    <text-field
         type="password"
         name="password"
         label="password"
         placeholder="Your password"
     />
-    <validation-field
+    <text-field
         type="password"
         name="confirmPassword"
         label="confirmPassword"

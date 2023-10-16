@@ -19,7 +19,7 @@ import PrepareButton from "@/components/validate/PrepareButton.vue";
 import {FireIcon} from '@heroicons/vue/20/solid'
 import {Form} from 'vee-validate';
 import * as yup from 'yup';
-import ValidationField from "@/components/validate/ValidationField.vue";
+import ValidationField from "@/components/validate/FieldWrapper.vue";
 
 const initialValue = {
   date: "1976-07-20",

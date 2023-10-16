@@ -7,7 +7,7 @@ import {ArrowRightIcon} from '@heroicons/vue/20/solid'
 import {Form, Field} from 'vee-validate';
 import {ref, computed} from 'vue';
 import PrepareButton from "./PrepareButton.vue";
-import ValidationField from "./ValidationField.vue";
+import ValidationField from "./FieldWrapper.vue";
 
 const currentStep = ref(0);
 const PERSONS = {
