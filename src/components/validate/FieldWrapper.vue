@@ -1,14 +1,16 @@
 <template>
-  <div class="input-wrapper w-full relative max-w-screen-md mx-auto border-2 p-4 mb-6">
-    <slot :class="fieldClassesOutlined"/>
+  <div class="input-wrapper relative input-wrapper default w-full relative max-w-screen-md mx-auto border-2 p-4 mb-6">
+    <slot/>
     <label
         v-if="label"
+        :class="containerClasses.label"
         class="pointer-events-none bg-white absolute left-3 top-0 mb-0 origin-[0_0] truncate p-[0.37rem] leading-[1] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.8rem] peer-focus:scale-[0.8] peer-focus:text-primaryColor peer-data-[te-input-state-active]:-translate-y-[0.8rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primaryColor"
     >
       {{ label }}
     </label>
     <span
         v-if="error"
+        :class="containerClasses.error"
         class="text-red-600"
     >
       {{error}}
@@ -23,14 +25,22 @@ const props = defineProps({
   errors: [String, Array],
   label: String,
   variant: {
-    default: "peer block min-h-[auto] w-full rounded ring-1 bg-transparent px-3 py-[0.32rem] leading-[1.6] placeholder-black::placeholder outline-none transition-all duration-200 ease-linear motion-reduce:transition-none",
-    contained: "peer block min-h-[auto] w-full  bg-red-400 px-3 py-[0.32rem] leading-[1.6] placeholder-black::placeholder outline-none transition-all duration-200 ease-linear motion-reduce:transition-none"
+    type: String,
+    default: "default",
   }
 })
 
- const fieldClassesOutlined = "peer block min-h-[auto] w-full rounded ring-1 bg-transparent px-3 py-[0.32rem] leading-[1.6] placeholder-black::placeholder outline-none transition-all duration-200 ease-linear motion-reduce:transition-none";
-// const fieldClassesContained = "peer block min-h-[auto] w-full  bg-red-400 px-3 py-[0.32rem] leading-[1.6] placeholder-black::placeholder outline-none transition-all duration-200 ease-linear motion-reduce:transition-none"
+const containerClasses = computed(() => {
+  return {
+    default: {
+      label: "bg-green-500",
+      error: "bg-red-500",
+    },
+  }[props.variant] || {}
 
+});
+//const isContained = computed(() => props.variant === props.contained);
+//
 const error = computed(()=> {
   if (Array.isArray(props.errors)) {
       return  props.errors[0]

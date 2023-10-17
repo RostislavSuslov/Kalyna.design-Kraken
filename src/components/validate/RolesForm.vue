@@ -13,6 +13,8 @@ const PERSONS = {
   student: "Student",
 };
 
+
+
 const initialValue = {
   person: PERSONS.teacher,
   name: "",
@@ -66,23 +68,28 @@ const { handleSubmit, values, errors, isSubmitting } = useForm({
         name="email"
         label="Email"
         placeholder="Your email"
+
     />
+
     <text-field
+        label="Phone"
         name="phoneNumber"
         type="phone"
         placeholder="+38(999)-99-99-999"
         v-if="values.person === PERSONS.teacher"
-        mask=""
         v-mask="'+38(000)-00-00-000'"
+
     />
-    <text-field
-        type="text"
-        name="series_passport"
-        label="Series passport"
-        placeholder="AA123456"
-        v-if="values.person === PERSONS.teacher"
-        v-mask="'SS 000000'"
-    />
+    <keep-alive>
+      <text-field
+          type="text"
+          name="series_passport"
+          label="Series passport"
+          placeholder="AA123456"
+          v-if="values.person === PERSONS.teacher"
+          v-mask="'SS 000000'"
+      />
+    </keep-alive>
     <text-field
         type="password"
         name="password"

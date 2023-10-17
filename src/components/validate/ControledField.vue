@@ -7,7 +7,6 @@
         :name="name"
         :type="type"
         :value="value"
-        :class="fieldClassesOutlined"
         v-model="innerValue"
     >
   </field-wrapper>
@@ -16,7 +15,6 @@
 <script setup>
 import FieldWrapper from "@/components/validate/FieldWrapper.vue";
 import { useField } from 'vee-validate';
-
 
 const props = defineProps({
   name: {
@@ -30,8 +28,6 @@ const props = defineProps({
       return ["radio", "checkbox"]
     },
   },
-
-
   label: String,
   placeholder: String,
   value: String,

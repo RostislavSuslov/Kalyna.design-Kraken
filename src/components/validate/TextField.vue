@@ -2,16 +2,15 @@
   <field-wrapper
       :label="label"
       :errors="errors"
-      :class="fieldClassesOutlined"
+      :variant="variant"
   >
       <input
           :name="name"
           :type="type"
           :placeholder="placeholder"
-          :class="fieldClassesOutlined"
           v-model="innerValue"
 
-  />
+      />
   </field-wrapper>
 </template>
 
@@ -31,6 +30,7 @@ const props = defineProps({
   label: String,
   placeholder: String,
   class: String,
+  variant: String,
 })
 
 const {value: innerValue, errors} = useField(()=>props.name)
