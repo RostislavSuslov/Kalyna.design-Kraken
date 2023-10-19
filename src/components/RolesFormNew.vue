@@ -3,13 +3,14 @@
 import * as yup from 'yup';
 import "yup-phone";
 import { useForm } from 'vee-validate';
-import {FireIcon} from '@heroicons/vue/20/solid'
-import PrepareButton from "./validate/PrepareButton.vue";
+
 import ControledField from "@/components/validate/ControledField.vue";
 import TextField from "@/components/validate/TextField.vue";
-import {computed} from "vue";
+import {computed, ref} from "vue";
 import RolesFormTeacher from "@/components/RolesFormTeacher.vue";
 import RolesFormStudent from "@/components/RolesFormStudent.vue";
+import CustomModal from "@/components/CustomModal.vue";
+import { defineEmits} from 'vue';
 
 const PERSONS = {
   Teacher: "33",
@@ -25,6 +26,8 @@ const initialValue = {
   person: PERSONS.Teacher,
   name: "",
 };
+
+const loading = ref(false);
 
 const { handleSubmit, values, errors } = useForm({
   initialValues: initialValue,
@@ -55,15 +58,28 @@ const activeFields = computed(() => {
   return tabs[values.person]
 });
 
-const onSubmit = handleSubmit((values) => {
-  console.log(JSON.stringify(values, null, 2));
-});
+ const onSubmit = handleSubmit((values) => {
+   loading.value = true;
+   setTimeout(()=>{
+   loading.value = false;
+     console.log(JSON.stringify(values, null, 2));
+   },1000)
+
+ });
+
+
+const emit = defineEmits(['confirmClicked'])
+const handleConfirm = () => {
+  onSubmit();
+  console.log('Confirm clicked!')
+  emit('confirmClicked')
+}
 </script>
 <template>
+
   <form
       @submit="onSubmit"
       class="flex flex-col items-center border-2 px-6 py-10 max-w-xl mx-auto mb-6 rounded-[4px]"
-
   >
     <h3 class="block w-full text-3xl mb-8">Roles form</h3>
     <label>Select your role:</label>
@@ -81,9 +97,7 @@ const onSubmit = handleSubmit((values) => {
         placeholder="Your email"
 
     />
-
     <component :is="activeFields" class="tab"></component>
-
     <text-field
         type="password"
         name="password"
@@ -96,17 +110,18 @@ const onSubmit = handleSubmit((values) => {
         label="confirmPassword"
         placeholder="Confirm password"
     />
-    <prepare-button
-        color="success"
-        :right-icon="FireIcon"
-        type="submit"
-        :loading="isSubmitting"
-    >Submit
-    </prepare-button>
+<!--    <prepare-button-->
+<!--        color="success"-->
+<!--        :right-icon="PaperAirplaneIcon"-->
+<!--        type="submit"-->
+
+<!--    >Submit-->
+<!--    </prepare-button>-->
     <pre>values: {{ values }}</pre>
     <pre>errors: {{ errors }}</pre>
-
+    <custom-modal @confirmClicked="handleConfirm"/>
   </form>
+
 </template>
 <style>
 
