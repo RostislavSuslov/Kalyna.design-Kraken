@@ -1,64 +1,48 @@
 <template>
   <div>
-    <prepare-button
-        color="success"
-        :right-icon="PowerIcon"
-        @click="open = true"
-        type="button"
-        :loading="false"
-
-    >Submit
-    </prepare-button>
-
-
-    <Teleport to="body">
-      <div v-if="open" class="fixed inset-0 flex items-center justify-center z-50">
+      <div v-if="openModal" class="fixed inset-0 flex items-center justify-center z-50">
         <div class="modal-container">
           <h2 class="text-2xl font-bold text-gray-800 mb-4">Hello from the modal!</h2>
-
           <div class="flex">
             <prepare-button
                 color="danger"
                 type="button"
-                @click="open = false"
-                :left-icon="HandThumbDownIcon"
+                @click="onCloseModal"
             >Close</prepare-button>
             <prepare-button
                 color="warning"
-                type="submit"
-                @click="handleConfirm"
+                type="button"
+                @click="confirmForm"
                 :right-icon="RocketLaunchIcon"
             >
               Confirm
             </prepare-button>
           </div>
-          <!--        <button type="button" @click="open = false">Close</button>-->
-          <!--        <button type="submit" @click="handleConfirm">Confirm</button>-->
         </div>
       </div>
-    </Teleport>
   </div>
 </template>
 
 <script setup>
-import {ref, defineEmits} from 'vue';
-import {PowerIcon} from '@heroicons/vue/20/solid';
+import {defineEmits} from 'vue';
 import {RocketLaunchIcon} from '@heroicons/vue/20/solid';
-import {HandThumbDownIcon} from '@heroicons/vue/20/solid';
 import PrepareButton from "./validate/PrepareButton.vue";
 
-const open = ref(false)
-const loading = ref(true)
-const emit = defineEmits(['confirmClicked'])
+defineProps({
+    openModal: Boolean,
+})
 
-const handleConfirm = () => {
-  emit('confirmClicked');
-  open.value = false;
-
+const emit = defineEmits(['confirm', "update:openModal"]);
+const onCloseModal = () => {
+  emit('update:openModal', false)
+}
+const confirmForm = () => {
+  emit('confirm');
+  onCloseModal()
 }
 </script>
 
-<style type="scss" scoped>
+<style lang="scss" scoped>
 
 /* Стили для модального окна */
 .modal-container {

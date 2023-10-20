@@ -38,3 +38,8 @@ const {value: innerValue, errors} = useField(()=>props.name)
 <style scoped>
 
 </style>
+
+<!--
+1. прийняти пропс.
+2. Зробити двустороню прив'язку, через useForm, та modelValue
+-->
